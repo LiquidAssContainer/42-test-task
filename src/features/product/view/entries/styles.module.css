@@ -1,0 +1,9 @@
+.product_list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  /* padding-inline: 20px; */
+  max-width: 1920px;
+  width: 80%;
+  margin-inline: auto;
+}
