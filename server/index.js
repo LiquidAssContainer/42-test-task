@@ -33,25 +33,19 @@ const generateProductCollection = (count, categories) => {
 
 const getFilteredProducts = (
   products,
-  {
-    sort,
-    categories,
-    minPrice = 0,
-    maxPrice = Infinity,
-    offset = 0,
-    limit = 30,
-  },
+  { sort, category, minPrice = 0, maxPrice = Infinity, offset = 0, limit = 30 },
 ) => {
   let filteredProducts = products;
-  let categoriesArray = null;
+  // let categoriesArray = null;
 
-  if (categories) {
-    categoriesArray = categories.split(' ');
-  }
+  // if (categories) {
+  //   categoriesArray = categories.split(' ');
+  // }
 
   filteredProducts = products.filter(
-    ({ category, price }) =>
-      (!categoriesArray || categoriesArray.includes(category)) &&
+    ({ category: productCategory, price }) =>
+      // (!categoriesArray || categoriesArray.includes(category)) &&
+      (!category || category === productCategory.id) &&
       minPrice <= price &&
       maxPrice >= price,
   );
@@ -85,6 +79,7 @@ app.get('/categories', (_, res) => {
 });
 
 app.get('/products', ({ query }, res) => {
+  console.log(query);
   res.json(getFilteredProducts(products, query));
 });
 

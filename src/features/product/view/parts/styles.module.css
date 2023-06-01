@@ -15,7 +15,8 @@
   top: 5px;
   right: 5px;
   color: #fff;
-  background-color: #e49200;
+  /* background-color: #e49200; */
+  background-color: #5a5a5a;
   padding: 3px 6px;
   border-radius: 3px;
 }
@@ -29,9 +30,21 @@
 
 .name {
   font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.additional_info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .price {
   margin-top: auto;
   font-weight: 700;
+}
+
+.popularity {
+  font-weight: 700;
+  font-size: 0.8rem;
 }

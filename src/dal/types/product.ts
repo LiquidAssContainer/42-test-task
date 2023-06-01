@@ -7,5 +7,5 @@ export type Product = {
   imageUrl: string;
   price: number;
   category: Category;
-  popularuty: number;
+  popularity: number;
 };

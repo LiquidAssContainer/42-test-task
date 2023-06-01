@@ -1,12 +1,21 @@
 import { FC } from 'react';
-import styles from './styles.module.css';
 import { useUnit } from 'effector-react';
-import { $products } from '../../model/public';
+import styles from './styles.module.css';
+import { $products, getNextProductsFx } from '../../model/public';
 import { ProductItem } from '../parts';
 import { Product } from '~/dal';
+import { $hasNext } from '../../model/private';
 
 export const ProductList: FC = () => {
-  const [products] = useUnit([$products]);
+  const [products, hasNext, getNextProducts] = useUnit([
+    $products,
+    $hasNext,
+    getNextProductsFx,
+  ]);
+
+  const handleClick = () => {
+    getNextProducts();
+  };
 
   return (
     <ul className={styles.product_list}>
@@ -15,6 +24,7 @@ export const ProductList: FC = () => {
           <ProductItem {...item} />
         </li>
       ))}
+      {hasNext && <button onClick={handleClick}>Load more</button>}
     </ul>
   );
 };

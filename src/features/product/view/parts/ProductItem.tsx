@@ -3,7 +3,7 @@ import styles from './styles.module.css';
 import { Product } from '~/dal';
 import { formatPrice } from '../../lib';
 
-type ProductItemProps = Partial<Product>;
+type ProductItemProps = Omit<Product, 'id'>;
 
 export const ProductItem: FC<ProductItemProps> = ({
   imageUrl,
@@ -11,14 +11,20 @@ export const ProductItem: FC<ProductItemProps> = ({
   description,
   price,
   category,
+  popularity,
 }) => {
+  const pop = (popularity / 10).toFixed(1);
+
   return (
     <article className={styles.product}>
-      {category && <div className={styles.category}>{category.name}</div>}
+      <div className={styles.category}>{category.name}</div>
       <img className={styles.image} alt="Изображение товара" src={imageUrl} />
       <header className={styles.name}>{name}</header>
       <div className={styles.description}>{description}</div>
-      <div className={styles.price}>{formatPrice(price!)}</div>
+      <div className={styles.additional_info}>
+        <div className={styles.price}>{formatPrice(price)}</div>
+        <div className={styles.popularity}>POP: {pop}</div>
+      </div>
     </article>
   );
 };

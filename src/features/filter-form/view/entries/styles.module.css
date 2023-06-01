@@ -1,0 +1,26 @@
+.form {
+  position: sticky;
+  top: 10px;
+  width: 20%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+}
+
+.price_range {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.form_group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.submit {
+  min-width: 100px;
+  cursor: pointer;
+}

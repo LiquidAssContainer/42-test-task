@@ -3,4 +3,5 @@ export const formatPrice = (price: number): string =>
     style: 'currency',
     currency: 'RUB',
     currencyDisplay: 'narrowSymbol',
+    maximumFractionDigits: 0,
   }).format(price);
