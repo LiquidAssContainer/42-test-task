@@ -1,18 +1,22 @@
 import { sample } from 'effector';
-import { getQueryParamsFx } from './public';
-import { filterForm } from '~/features/filter-form';
-import { getProductsFx } from '~/features/product';
-import { mapToQuery } from '~/lib';
 
-getQueryParamsFx.use(async () => {
-  const urlSearchParams = new URLSearchParams(window.location.search);
-  const params = Object.fromEntries(urlSearchParams.entries());
-  console.log(123, params);
-  return params;
+import { getQueryParamsFx, setQueryParamsFx } from './public';
+
+import { filterForm } from '~/features/filter-form';
+import { $filters } from '~/features/product-list';
+
+import { mapFromQuery, filterQueryParams } from '~/lib';
+
+getQueryParamsFx.use(async () => mapFromQuery(window.location.search));
+
+setQueryParamsFx.use(async (params) => {
+  const filteredParams = filterQueryParams(params);
+  const url = new URL(window.location.href);
+  url.search = new URLSearchParams(filteredParams).toString();
+  window.history.pushState({}, '', url.toString());
 });
 
 sample({
   clock: getQueryParamsFx.doneData,
-  fn: mapToQuery,
-  target: [getProductsFx, filterForm.setForm],
+  target: [$filters, filterForm.setForm],
 });

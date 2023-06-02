@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import styles from './styles.module.css';
 import { Product } from '~/dal';
 import { formatPrice } from '../../lib';
+import styles from './styles.module.css';
 
 type ProductItemProps = Omit<Product, 'id'>;
 

@@ -1,15 +1,17 @@
-import { Effect, attach, createEffect } from 'effector';
-import { Response, requestFx } from './request';
-import { Category } from './types/category';
-import { Product } from './types';
+import { Effect, attach } from 'effector';
 
-export const getProductsReqFx: Effect<any | void, Response<Product[]>> = attach(
-  {
-    effect: requestFx,
-    mapParams: (params) => ({
-      path: '/products',
-      params,
-    }),
-    // mapResult: (res) => res.body,
-  },
-);
+import { Response, requestFx } from './request';
+import { Product, QueryParams } from './types';
+
+import { filterQueryParams } from '~/lib';
+
+export const getProductsReqFx: Effect<
+  QueryParams,
+  Response<Product[]>
+> = attach({
+  effect: requestFx,
+  mapParams: (params) => ({
+    path: '/products',
+    params: filterQueryParams(params),
+  }),
+});

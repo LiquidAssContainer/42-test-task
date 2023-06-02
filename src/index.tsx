@@ -1,7 +1,6 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
 import { createRoot } from 'react-dom/client';
-import { attachLogger } from 'effector-logger';
+// import { attachLogger } from 'effector-logger';
 
 import { App } from './App';
 

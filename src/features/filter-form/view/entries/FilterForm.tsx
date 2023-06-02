@@ -1,11 +1,13 @@
-import { FC, FormEvent, useMemo } from 'react';
-import styles from './styles.module.css';
-import { filterForm } from '../../model';
-import { useForm } from 'effector-forms';
+import { FC, FormEvent } from 'react';
 import { useUnit } from 'effector-react';
-import { $categories } from '~/features/select-category/model/public';
-import { Option, Select } from '~/ui/components/Select';
-import { Input } from '~/ui/components/Input';
+import { useForm } from 'effector-forms';
+
+import { filterForm } from '../../model';
+
+import { $categories } from '~/features/select-category';
+import { Option, Select, Input } from '~/ui';
+
+import styles from './styles.module.css';
 
 const sortOptions = [
   { value: '', label: 'По умолчанию' },
@@ -18,9 +20,8 @@ export const FilterForm: FC = () => {
   const [categories] = useUnit([$categories]);
   const { fields, submit, hasError } = useForm(filterForm);
 
-  const categoryOptions = useMemo(
-    () => [{ id: '', name: 'Все категории' }].concat(categories),
-    [categories],
+  const categoryOptions = [{ id: '', name: 'Все категории' }].concat(
+    categories,
   );
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -58,7 +59,6 @@ export const FilterForm: FC = () => {
         </Select>
       </div>
 
-      {/* <div className={styles.price_range}> */}
       <div className={styles.form_group}>
         <label className={styles.label} htmlFor="minPrice">
           Мин. цена
@@ -84,7 +84,7 @@ export const FilterForm: FC = () => {
           onChange={(e) => fields.maxPrice.onChange(e.target.value)}
         />
       </div>
-      {/* </div> */}
+
       <button className={styles.submit} type="submit">
         Найти
       </button>

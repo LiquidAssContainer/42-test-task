@@ -1,9 +1,4 @@
-import { combine } from 'effector';
-import { domain } from './private';
-import { $selectedCategory } from '~/features/select-category/model/public';
 import { createForm } from 'effector-forms';
-
-export const submitFilterFormFx = domain.createEffect();
 
 export const filterForm = createForm({
   validateOn: ['submit'],
@@ -19,7 +14,8 @@ export const filterForm = createForm({
       rules: [
         {
           name: 'minPrice',
-          validator: (minPrice, { maxPrice }) => +minPrice <= +maxPrice,
+          validator: (minPrice, { maxPrice }) =>
+            minPrice && maxPrice ? +minPrice <= +maxPrice : true,
         },
       ],
     },
@@ -28,7 +24,8 @@ export const filterForm = createForm({
       rules: [
         {
           name: 'maxPrice',
-          validator: (maxPrice, { minPrice }) => +minPrice <= +maxPrice,
+          validator: (maxPrice, { minPrice }) =>
+            minPrice && maxPrice ? +minPrice <= +maxPrice : true,
         },
       ],
     },

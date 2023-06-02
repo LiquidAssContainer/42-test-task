@@ -11,7 +11,7 @@ module.exports = (async () => {
         logging: 'none',
       },
       allowedHosts: ['.preview.csb.app'],
-      port: 6660,
+      port: 3300,
     },
   });
 })();
