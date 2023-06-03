@@ -2,10 +2,7 @@ const categoryList = [
   { id: 'preserves', name: 'Консервы' },
   { id: 'sharks', name: 'Акулы' },
   { id: 'beer', name: 'Пиво' },
-  { id: 'dino', name: 'Динозавры' },
-  // { id: 'gpu', name: 'Видеокарты' },
-  // { id: 'haribo', name: 'Haribo' },
-  // { id: 'smartphones', name: 'Смартфоны' },
+  { id: 'dinos', name: 'Динозавры' },
 ];
 
 const productParameters = {
@@ -32,7 +29,7 @@ const productParameters = {
       'Главное, что не durak',
     ],
   },
-  dino: {
+  dinos: {
     name: ['Динозаврик', 'Динозаврище'],
     price: [10000, 200000],
     imageUrl: ['/images/dino1.jpg', '/images/dino2.jpg', '/images/dino3.jpg'],

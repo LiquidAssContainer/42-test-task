@@ -13,7 +13,7 @@ setQueryParamsFx.use(async (params) => {
   const filteredParams = filterQueryParams(params);
   const url = new URL(window.location.href);
   url.search = new URLSearchParams(filteredParams).toString();
-  window.history.pushState({}, '', url.toString());
+  window.history.replaceState({}, '', url.toString());
 });
 
 sample({
