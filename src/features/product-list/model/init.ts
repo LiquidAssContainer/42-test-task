@@ -18,6 +18,9 @@ $products
     products.concat(nextProducts),
   );
 
+$hasNextProducts.reset(getProductsFx);
+$offset.reset(getProductsFx);
+
 getProductsFx.use(async (params) => {
   setQueryParamsFx(params);
 
