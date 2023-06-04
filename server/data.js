@@ -15,7 +15,7 @@ const productParameters = {
   sharks: {
     name: ['Акула'],
     price: [10000, 99000],
-    imageUrl: ['/images/shark1.jpg'],
+    imageUrl: ['/images/shark1.jpg', '/images/shark2.webp'],
     description: ['Да это же окула'],
   },
   beer: {

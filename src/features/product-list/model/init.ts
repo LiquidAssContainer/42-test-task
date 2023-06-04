@@ -18,9 +18,6 @@ $products
     products.concat(nextProducts),
   );
 
-$hasNextProducts.reset(getProductsFx);
-$offset.reset(getProductsFx);
-
 getProductsFx.use(async (params) => {
   setQueryParamsFx(params);
 
@@ -59,9 +56,7 @@ sample({
 });
 
 sample({
-  clock: [getProductsFx.doneData, getNextProductsFx.doneData],
-  source: $products,
-  filter: $hasNextProducts,
+  clock: $products.updates,
   fn: (products) => products.length,
   target: $offset,
 });

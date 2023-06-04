@@ -21,9 +21,7 @@ export const ProductList: FC = () => {
     $areNextProductsLoading,
   ]);
 
-  useOnScrollEnd(() => {
-    nextProductsRequested();
-  }, 220);
+  useOnScrollEnd(nextProductsRequested, 220);
 
   return areProductsLoading ? (
     <LoadingSpinner />

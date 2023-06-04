@@ -31,7 +31,3 @@ export const filterForm = createForm({
     },
   },
 });
-
-// filterForm.$values.watch((values) => {
-//   console.log(values);
-// });
